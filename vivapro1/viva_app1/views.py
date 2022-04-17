@@ -1,14 +1,23 @@
 from django.shortcuts import render
 from datetime import datetime
-from viva_app1.models import Flames
+from viva_app1.models import Flames, Contact
 
 # Create your views here.
 
 def home(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        gender = request.POST.get('gender')
+        feedback = request.POST.get('feedback')
+        contact = Contact(name=name, gender=gender, feedback=feedback)
+        contact.save()
     return render(request, 'home.html')
 
 def play(request):
     return render(request, 'play.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 
 def result(request):
     if request.method == "POST":
@@ -16,7 +25,6 @@ def result(request):
         name2 = request.POST.get('name2')
         flame = Flames(name1=name1, name2=name2, date=datetime.today())
         flame.save()
-        op = ""
         for i in range(len(name1)):
             for j in range(len(name2)):
                 if name1[i] == name2[j]:
@@ -44,6 +52,18 @@ def result(request):
                 i = 0
             else:
                 i = i + 1
+        if ans == "F":
+            ans = "FRIENDS"
+        elif ans == "L":
+            ans = "LOVE"
+        elif ans == "A":
+            ans = "AFFECTION"
+        elif ans == "M":
+            ans = "MARRIAGE"
+        elif ans == "E":
+            ans = "ENEMIES"
+        elif ans == "S":
+            ans = "SIBLINGS"
         answers = {"ans": ans}
 
         return render(request, 'result.html', answers)

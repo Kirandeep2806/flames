@@ -2,9 +2,12 @@
 
 {% block title %} RESULT {% endblock title %}
 {% block content %}
-<h1>THERE YOU GO</h1>
-{{ans}}
+<h2>THERE YOU GO</h2>
 <br>
-<button type="submit"><a href="forms">Wanna try again?</a></button>
-<button type="submit"><a href="">Return to home</a></button>
+<h1>{{ans}}</h2>
+<br>
+<a href="play" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Wanna try again?</a>
+<br>
+<a href="/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Return to home</a>
+{% comment %} <button type="submit"><a href="play">Wanna try again?</a></button><button type="submit"><a href="/">Return to home</a></button> {% endcomment %}
 {% endblock content %}

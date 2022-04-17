@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} CONTACT {% endblock title %}
+{% block css %}
+
+{% endblock css %}
+{% block navbar %}
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="play">Play</a>
+    <a class="nav-link active" aria-current="page" href="contact">Contact</a>
+    </nav>
+{% endblock navbar %}
+{% block content %}
+<main class="form-signin">
+    <form action="/" method="post">
+    {% csrf_token %}
+    <h1 class="h3 my-2 fw-normal">Contact Us</h1>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+        <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+    <select class="form-select" name="gender" id="inputGroupSelect01">
+        <option selected>Choose...</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+    </select>
+    </div>
+      
+    <div class="input-group">
+    <span class="input-group-text">Feedback</span>
+    <textarea class="form-control" name="feedback" aria-label="With textarea"></textarea>
+    </div>
+    <br>
+
+    <button style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" class="w-100 btn btn-lg btn-light" type="submit">Submit</button>
+    </form>
+</main>
+{% endblock content %}

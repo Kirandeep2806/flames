@@ -8,4 +8,12 @@ class Flames(models.Model):
 
     def __str__(self):
         return self.name1
+
+class Contact(models.Model):
+    name = models.CharField(max_length=30)
+    gender = models.CharField(max_length=6)
+    feedback = models.CharField(max_length=200, default=None)
+
+    def __str__(self):
+        return self.name
     
