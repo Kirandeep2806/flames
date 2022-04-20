@@ -52,18 +52,39 @@ def result(request):
                 i = 0
             else:
                 i = i + 1
+
+        img_path = ""
+        bgm = ""
+        desc = ""
         if ans == "F":
             ans = "FRIENDS"
+            img_path = "static/images/F.jpg"
+            bgm = "static/audio/F.mp3"
         elif ans == "L":
             ans = "LOVE"
+            img_path = "static/images/L.jpg"
+            bgm = "static/audio/L.mp3"
         elif ans == "A":
             ans = "AFFECTION"
+            img_path = "static/images/A.jpg"
+            bgm = "static/audio/A.mp3"
         elif ans == "M":
             ans = "MARRIAGE"
+            img_path = "static/images/M.jpg"
+            # bgm = "static/audio/M.mp3"
         elif ans == "E":
             ans = "ENEMIES"
+            img_path = "static/images/E.jpg"
+            bgm = "static/audio/E.mp3"
         elif ans == "S":
             ans = "SIBLINGS"
-        answers = {"ans": ans}
+            img_path = "static/images/S.jpg"
+            bgm = "static/audio/S.mp3"
+        answers = {
+            "ans": ans,
+            "img": img_path,
+            "bgm": bgm,
+            "desc": desc,
+        }
 
         return render(request, 'result.html', answers)

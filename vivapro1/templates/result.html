@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %}
 
 {% block title %} RESULT {% endblock title %}
 {% block content %}
@@ -8,6 +8,86 @@
 <br>
 <a href="play" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Wanna try again?</a>
 <br>
-<a href="/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Return to home</a>
+<a href="/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Return to home</a> {% endcomment %}
+
 {% comment %} <button type="submit"><a href="play">Wanna try again?</a></button><button type="submit"><a href="/">Return to home</a></button> {% endcomment %}
-{% endblock content %}
+{% comment %} {% endblock content %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .bottom {
+            margin: 0;
+            padding: 0;
+            /* background: #151515; */
+            background-image: url({{img}});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 730px;
+        }
+        .overlay {
+            position: absolute;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111111;
+            opacity: .7;
+        }
+        .overlay .but {
+            width: 100%;
+            height: 100%;
+            background: #111111;
+            opacity: .7;
+        }
+        .main {
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            top: 0;
+            right: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="bottom">
+        <div class="overlay">
+            <button class="but" onmousemove="sound.play()"></button>
+        </div>
+        <div class="main">
+            <audio id="sound" src={{bgm}}></audio>
+            <h2>THERE YOU GO</h2>
+            <br>
+            <h1>{{ans}}</h2>
+            <br>
+            <a href="play" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Wanna try again?</a>
+            <br>
+            <a href="/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Return to home</a>
+        </div>
+    </div>
+</body>
+</html>
