@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+admin.site.site_header = "FLAMES ADMIN"
+admin.site.site_title = "FLAMES"
+admin.site.index_title = "FLAMES Admin Portal"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('viva_app1.urls'))

@@ -23,8 +23,7 @@ def result(request):
     if request.method == "POST":
         name1 = request.POST.get('name1')
         name2 = request.POST.get('name2')
-        flame = Flames(name1=name1, name2=name2, date=datetime.today())
-        flame.save()
+        n1 = name1; n2 = name2
         for i in range(len(name1)):
             for j in range(len(name2)):
                 if name1[i] == name2[j]:
@@ -53,38 +52,40 @@ def result(request):
             else:
                 i = i + 1
 
-        img_path = ""
         bgm = ""
         desc = ""
         if ans == "F":
             ans = "FRIENDS"
-            img_path = "static/images/F.jpg"
             bgm = "static/audio/F.mp3"
+            desc = "You truly are connected by heart! I'm sure your friendship will cherish more and more"
         elif ans == "L":
             ans = "LOVE"
-            img_path = "static/images/L.jpg"
             bgm = "static/audio/L.mp3"
+            desc = "Lucky You!!! Made for each other, huh? I'm sure your 'LOVE' will bloom and blossom!"
         elif ans == "A":
             ans = "AFFECTION"
-            img_path = "static/images/A.jpg"
             bgm = "static/audio/A.mp3"
+            desc = "Seems like 'AFFECTION' is the word for your relation! True Affection resides in both of your hearts!"
         elif ans == "M":
             ans = "MARRIAGE"
-            img_path = "static/images/M.jpg"
-            # bgm = "static/audio/M.mp3"
+            bgm = "static/audio/M.mp3"
+            desc = "Soulmates, huh? You both are destined to be married, Good Luck!"
         elif ans == "E":
             ans = "ENEMIES"
-            img_path = "static/images/E.jpg"
             bgm = "static/audio/E.mp3"
+            desc = "Oh No!!!Apparently, you both may not get along very well...Hope you bury the hatchet!"
         elif ans == "S":
             ans = "SIBLINGS"
-            img_path = "static/images/S.jpg"
             bgm = "static/audio/S.mp3"
+            desc = "Side by side or miles apart, you are 'SIBLINGS' connected by heart!"
         answers = {
+            "name1": n1,
+            "name2": n2,
             "ans": ans,
-            "img": img_path,
             "bgm": bgm,
             "desc": desc,
         }
-
+        print(name1, name2)
+        flame = Flames(name1=n1, name2=n2, result=ans, date=datetime.today())
+        flame.save()
         return render(request, 'result.html', answers)
